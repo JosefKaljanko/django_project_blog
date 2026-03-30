@@ -1,0 +1,9 @@
+my_text.txt
+
+.venv/
+__pycache__/
+*.pyc
+.env
+.idea/
+.vscode/
+db.sqlite3

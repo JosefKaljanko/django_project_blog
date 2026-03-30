@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+	Blog
+{% endblock %}
+
+{% block content %}
+	<h1>Blog Page</h1>
+
+    {% if posts %}
+    	<div class="card">
+          <ul>
+            {% for post in posts %}
+              <li>
+                <a href="{% url 'blog:post_detail' slug=post.slug %}">
+                  {{ post.title }}
+                </a>
+                {% if post.published_at %}
+                                    <!-- Django template filter -->
+                  <small>- {{ post.published_at|date:"j.n.Y H:i" }}</small>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+    {% else %}
+        <p>Zatím nejsou publikováne žádné články.</p>
+    {% endif %}
+{% endblock %}

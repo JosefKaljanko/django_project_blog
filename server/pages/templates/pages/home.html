@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+	Home | Django Project
+{% endblock %}
+
+{% block content %}
+	<h1>Ahoj </h1>
+    <p>Toto už jede přes templates + base layout + static CSS.</p>
+
+    <img class="hero" src="{% static 'img/obrazek_starwars.jpg' %}" alt="Image">
+
+    <div class="card">
+        <h2>Co už máme?</h2>
+        <ul>
+            <li>Runserver</li>
+            <li>Homepage</li>
+            <li>Css</li>
+            <li>Navbar jako include </li>
+            <li>+ odkaz na budoucí About page</li>
+            <li>Message jako include</li>
+            <li>Staticfiles + favicon</li>
+        </ul>
+    </div>
+{% endblock %}
+

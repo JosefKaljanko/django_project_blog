@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrace{% endblock %}
+
+
+{% block content %}
+	<h1>Registrace uživatele</h1>
+
+    <form action="" method="post" class="card form">
+        {% csrf_token %}
+
+{#todo form.as_p = ovladaní widget.attrs v djangu #}
+{#      {{ form.as_p }}#}
+
+{#    {% comment %}#}
+
+        {% if form.non_field_errors %}
+            <div class="error">
+        	  {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+
+        <div class="form-row">
+            <label for="{{ form.username.id_for_label }}">uživatelské Jméno</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+            	<div class="error">{{ form.username.errors|striptags }}</div>
+            {% endif %}
+            {% if form.username.help_text %}
+                {{ form.username.help_text }}
+            {% endif %}
+        </div>
+
+        <div class="form-row">
+            <label for="{{ form.first_name.id_for_label }}">Křestní Jméno</label>
+            {{ form.first_name }}
+            {% if form.first_name.errors %}
+            	<div class="error">{{ form.first_name.errors|striptags }}</div>
+            {% endif %}
+            {% if form.first_name.help_text %}
+                {{ form.first_name.help_text }}
+            {% endif %}
+        </div>
+
+        <div class="form-row">
+            <label for="{{ form.last_name.id_for_label }}">Příjmení</label>
+            {{ form.last_name }}
+            {% if form.last_name.errors %}
+            	<div class="error">{{ form.last_name.errors|striptags }}</div>
+            {% endif %}
+            {% if form.last_name.help_text %}
+                {{ form.last_name.help_text }}
+            {% endif %}
+        </div>
+
+        <div class="form-row">
+            <label for="{{ form.email.id_for_label }}">E-mail</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+            	<div class="error">{{ form.email.errors|striptags }}</div>
+            {% endif %}
+            {% if form.email.help_text %}
+                {{ form.email.help_text }}
+            {% endif %}
+        </div>
+
+        <div class="form-row">
+            <label for="{{ form.password1.id_for_label }}">Heslo</label>
+            {{ form.password1 }}
+
+            {% if form.password1.errors %}
+            	<div class="error">{{ form.password1.errors|striptags }}</div>
+            {% endif %}
+
+            {% if form.password1.help_text %}
+                {{ form.password1.help_text }}
+            {% endif %}
+        </div>
+
+        <div class="form-row">
+            <label for="{{ form.password2.id_for_label }}">Potvrzení Hesla</label>
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+            	<div class="error">{{ form.password2.errors|striptags }}</div>
+            {% endif %}
+            {% if form.password2.help_text %}
+                {{ form.password2.help_text }}
+            {% endif %}
+        </div>
+
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}">
+        {% endif %}
+{#    {% endcomment %}#}
+
+        <button class="btn" type="submit">Vytvořit účet</button>
+    </form>
+{% endblock %}

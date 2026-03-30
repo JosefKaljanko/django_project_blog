@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+  Login
+{% endblock %}
+
+
+
+{% block content %}
+	<h1>Přihlášení</h1>
+
+    <form action="" method="post" class="form card">
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}
+
+        <div class="form-row">
+                <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="error">{{ form.username.errors|striptags }}</div>
+                {% endif %}
+        </div>
+
+        <div class="form-row">
+                <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <div class="error">{{ form.password.errors|striptags }}</div>
+                {% endif %}
+        </div>
+
+        {# důležité: zachová ?next=/neco/    ??? toto je proč?#}
+        {% if next %}
+          <input type="hidden" name="next" value="{{ next }}">
+        {% endif %}
+
+        <button type="submit">Přihlásit →</button>
+    </form>
+{% endblock %}

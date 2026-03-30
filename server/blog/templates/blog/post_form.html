@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}
+    {% if mode == "create" %}
+        New Post
+    {% else %}
+        Edit Post
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+	<h1>
+    {% if mode == "create" %}
+    	Nový Článek
+    {% else %}
+    	Upravit článek
+    {% endif %}
+    </h1>
+
+    <form action="" method="post" class="form card">
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}   <!-- non_field_errors ??? -->
+
+        <div class="form-row">
+          <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+          {{ form.title }}
+          {% if form.title.errors %}
+            <div class="error">{{ form.title.errors|striptags }}</div>
+          {% endif %}
+        </div>
+
+        <div class="form-row">
+          <label for="{{ form.slug.id_for_label }}">{{ form.slug.label }}</label>
+          {{ form.slug }}
+          {% if form.slug.errors %}
+            <div class="error">{{ form.slug.errors|striptags }}</div>
+          {% endif %}
+        </div>
+
+        <div class="form-row">
+          <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
+          {{ form.content }}
+          {% if form.content.errors %}
+            <div class="error">{{ form.content.errors|striptags }}</div>
+          {% endif %}
+        </div>
+
+        <div class="form-row">
+          <label for="{{ form.status.id_for_label }}">{{ form.status.label }}</label>
+          {{ form.status }}
+          {% if form.status.errors %}
+            <div class="error">{{ form.status.errors|striptags }}</div>
+          {% endif %}
+        </div>
+
+        <button type="submit" class="button">
+            {% if mode == "create" %}
+            	Vytvořit
+            {% else %}
+            	Uložit změny
+            {% endif %}
+        </button>
+    </form>
+
+{% endblock %}

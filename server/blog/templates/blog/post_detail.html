@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Detail | {{ post.title }}
+{% endblock %}
+
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+{% block content %}
+    <div class="space">
+      <a class="btn-page" href="{% url 'blog:post_list' %}">← Zpět na Blog</a>
+    </div>
+
+    <h1>{{ post.title }}</h1>
+
+    {% if post.published_at %}
+    	<p>
+          <small>
+            Publikováno: {{ post.published_at|date:"j.n.Y H:i" }}
+          </small>
+        </p>
+    {% endif %}
+    <div class="card">
+      {{ post.content|linebreaks }}
+    </div>
+
+    <div>
+      {% if request.user.is_authenticated and request.user == post.author %}
+      	<p><a class="btn" href="{% url 'blog:post_update' slug=post.slug %}">Upravit</a></p>
+      {% endif %}
+    </div>
+{% endblock %}

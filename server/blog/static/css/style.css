@@ -1,0 +1,9 @@
+a .btn-page {
+    text-decoration: none;
+    color: black;
+    opacity: .8;
+}
+
+a .btn-page:hover {
+    opacity: 1;
+}
