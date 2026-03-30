@@ -19,6 +19,8 @@
 ## Access
 - http://localhost:8000
 - http://127.0.0.1:8000
+
+######   spuštění na stejné síti npř telefon:
 - http://xxx.xxx.xxx.xx:8000     místo xx nahradit MY_IP_ADRESS
 
 ## .env
@@ -34,3 +36,10 @@
     DB_HOST=localhost
     
     MY_IP_ADRESS= < Your ip adress (ipconfig) >
+
+# OPEN TO WORK 
+- LinkedIn: Josef Kaljanko
+- Email: josefkaljanko@gmail.com
+- Phone: +420 604 414 458
+
+
