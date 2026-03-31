@@ -87,7 +87,6 @@ class ContactForm(forms.Form):
         self.fields["email"].widget.attrs.setdefault("placeholder", "josef@email.cz")
         self.fields["message"].widget.attrs.setdefault("placeholder", "Napiš mi…")
 
-        ###### TADY Z UKAZEK DOLE
 
 class StyledAuthenticationForm(AuthenticationForm):
     def __init__(self, request=None, *args, **kwargs):
@@ -99,6 +98,7 @@ class StyledAuthenticationForm(AuthenticationForm):
 
         self.fields["username"].widget.attrs.setdefault("placeholder", "Uživatelské jméno")
         self.fields["password"].widget.attrs.setdefault("placeholder", "Heslo")
+
 
 class CustomRegistrationForm(UserCreationForm):
     email = forms.EmailField(label="E-mail", required=True)

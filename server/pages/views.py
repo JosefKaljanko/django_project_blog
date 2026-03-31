@@ -11,9 +11,6 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 from .forms import CustomRegistrationForm
 def home(request):
-    # return HttpResponse("""<h1>Hello django, I´m programmer :)</h1>
-    # <p>Tady je text paragrafu.</p>""")
-
     messages.success(request, "Message partial funguje... OK")
     messages.warning(request, "Message partial Warning funguje... OK")
     messages.info(request, "Message partial Info funguje... OK")
@@ -38,13 +35,6 @@ def contact(request):
     return render(request, "pages/contact.html", {"form": form})
 
 
-
-# -----------okey, máme nádherný formulář a funkční, co bychom mohli dále udělat??
-# něco co nás něco naučí??? nebo opakovat a zahrnout do toho nové CVB (s def get() a def post())....
-# co bys doporučil ty??
-
-
-# import Viev
 
 class ContactView(View):
     """CBV view - funkce GET a POST"""
@@ -109,21 +99,21 @@ def signup(request):
 
 
 class SignUpView(FormView):
-    print("START VIEW:")
+    # print("START VIEW:")
     template_name = "registration/signup.html"
     form_class = CustomRegistrationForm
-    print("ALL Form Fields: ", form_class)
+    # print("ALL Form Fields: ", form_class)
     success_url = reverse_lazy("home")
 
     def form_valid(self, form):
-        print("Form Cleaned data: ",form.cleaned_data)
+        # print("Form Cleaned data: ",form.cleaned_data)
         user = form.save()
-        print("View form_valid USER: ",user)
+        # print("View form_valid USER: ",user)
         login(self.request, user)
-        print("Jsem za AUTOLOGIN")
+        # print("Jsem za AUTOLOGIN")
         messages.success(self.request, "Účet vytvořen.. Jsi přihlášen")
 
         next_url = self.request.POST.get("next")
-        print("Next URL: ", next_url)
+        # print("Next URL: ", next_url)
         return redirect(next_url) if next_url else super().form_valid(form)
 

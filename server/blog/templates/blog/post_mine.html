@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+	Moje Články
+{% endblock %}
+
+{% block content %}
+	<h1>Moje Články</h1>
+
+    {% if posts %}
+    	<div class="card">
+          <ul>
+            {% for post in posts %}
+              <li>
+                <a href="{% url 'blog:post_detail' slug=post.slug %}">
+                  {{ post.title }}
+                </a>
+                <small>
+                  {{ post.get_status_display }}
+                  {% if post.published_at %}
+                        ({{ post.published_at|date:"j.n.Y H:i" }}...
+                  {% endif %}
+                </small>
+
+{#                {% if post.published_at %}#}
+{#                                    <!-- Django template filter -->#}
+{#                  <small>- {{ post.published_at|date:"j.n.Y H:i" }}</small>#}
+{#                {% endif %}#}
+                  <a href="{% url 'blog:post_update' slug=post.slug %}">...Edit</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+    {% else %}
+        <p>Zatím nemáš žádné články.</p>
+    {% endif %}
+{% endblock %}

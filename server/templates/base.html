@@ -23,23 +23,12 @@
 
 </head>
 
-<body>
-{% comment %}
-    <header class="site-header">
-        <div class="container">
-            <a href="/" class="brand">Django Project</a>
-            <nav class="nav">
-                <a href="/">Home</a>
-            </nav>
-        </div>
-    </header>
-{% endcomment %}
+<body class="layout">
     {% include 'partials/_navbar.html' %}
 
     <main class="container">
         {% include 'partials/_messages.html' %}
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
     </main>
 
     <footer class="site-footer">

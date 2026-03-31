@@ -13,10 +13,20 @@
 
     <h1>{{ post.title }}</h1>
 
+    {% if request.user.is_authenticated and request.user == post.author %}
+
+    {% endif %}
+
     {% if post.published_at %}
     	<p>
           <small>
-            Publikováno: {{ post.published_at|date:"j.n.Y H:i" }}
+            Publikováno: {{ post.published_at|date:"j.n.Y H:i" }} <br>
+{#            Autor: {{ post.author }}#}
+            {% if request.user.is_authenticated and request.user == post.author and request.user.id == post.author_id %}
+              Autorem jste vy.
+            {% else %}
+              Autor: {{ post.author }}
+            {% endif %}
           </small>
         </p>
     {% endif %}
@@ -24,9 +34,18 @@
       {{ post.content|linebreaks }}
     </div>
 
-    <div>
+
       {% if request.user.is_authenticated and request.user == post.author %}
-      	<p><a class="btn" href="{% url 'blog:post_update' slug=post.slug %}">Upravit</a></p>
+        <div class="actions">
+      	  <a class="btn-page" href="{% url 'blog:post_update' slug=post.slug %}">Upravit</a>
+
+          {% if post.status == "draft" %}
+            <form class="inline-form" action="{% url 'blog:post_publish' slug=post.slug %}" method="post">
+            {% csrf_token %}
+            <button class="btn-page" type="submit">Publikovat</button>
+            </form>
+          {% endif %}
+        </div>
+
       {% endif %}
-    </div>
-{% endblock %}
+    {% endblock %}

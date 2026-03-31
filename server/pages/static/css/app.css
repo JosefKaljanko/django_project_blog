@@ -1,9 +1,23 @@
 * { box-sizing: border-box; }
+html, body {
+    height: 100%;
+}
+
 body {
     margin: 0;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     line-height: 1.5;
 }
+
+body.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+body.layout main {
+    flex-grow: 1;       /* or: flex: 1; */
+}
+
 
 .container {
     width: min(1000px, 92%);
@@ -11,8 +25,11 @@ body {
 }
 
 .site-header {
-    border-bottom: 1px solid #e5e5e5;
+    /*border-bottom: 1px solid #e5e5e5;*/
+    border-bottom: 1px solid #000000;
     padding: 14px 0;
+    color: #353535;
+    background-color: #c3c3c3;
 }
 
 .brand {
@@ -21,15 +38,19 @@ body {
     color: inherit;
 }
 
+
 .nav a {
     margin-left: 12px;
     text-decoration: none;
     color: inherit;
-    opacity: .8;
+    /*color: #353535;*/
+    opacity: .6;
 }
 
 .nav a:hover {
     opacity: 1;
+    font-weight: bold;
+    margin-left: 9px;
 }
 
 .card {
@@ -39,10 +60,16 @@ body {
     padding: 16px;
 }
 .site-footer {
-    border-top: 1px solid #e5e5e5;
+    /*border-top: 1px solid #e5e5e5;*/
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+
     margin-top: 32px;
     padding: 14px 0;
     opacity: .75;
+    background-color: #c3c3c3;
+    /*flex: 0;*/
+
 }
 
 .nav-row {
@@ -50,6 +77,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+
 }
 .messages {
     margin: 14px 0;
@@ -107,7 +135,7 @@ button:hover {
 a.btn-page {
     display: inline-block;
     padding: 8px 20px 8px 15px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid #b6b6b6;
     border-radius: 12px;
     text-decoration: none;
     color: black;
@@ -121,7 +149,30 @@ a.btn-page:hover {
     opacity: 1;
 }
 
+button.btn-page {
+    display: inline-block;
+    padding: 8px 20px 8px 15px;
+    border: 1px solid #b6b6b6;
+    border-radius: 12px;
+    text-decoration: none;
+    color: black;
+    opacity: .8;
+    background-color: #cdcdcd;
 
+}
+
+button.btn-page:hover {
+    background-color: #cdcdcd;
+    opacity: 1;
+}
+
+.btn-page {
+    /*font-size: 12px;*/
+    font-size: max(1em);
+
+    /*color: #232323;*/
+    /*-webkit-text-fill-color: #b30000;*/
+}
 
 
 
@@ -240,6 +291,23 @@ button {
     display: inline;
     margin:0 0 0 15px;
     padding: 0 0 0 15px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.inline-form {
+    margin: 0;
+}
+
+.actions .btn-page {
+    display: inline-block;
+    width: auto;
 }
 
 

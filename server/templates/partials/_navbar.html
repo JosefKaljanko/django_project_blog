@@ -20,6 +20,7 @@
 
             {% if request.user.is_authenticated %}
                 <a href="{% url 'blog:post_create' %}" class="{% if request.resolver_match.url_name == 'post_create' %}active{% endif %}">New Post</a>
+                <a href="{% url 'blog:post_mine' %}" class="{% if request.resolver_match.url_name == 'post_mine' %}active{% endif %}">My Posts</a>
             {% endif %}
 
 
